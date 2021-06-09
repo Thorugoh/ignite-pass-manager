@@ -11,6 +11,7 @@ import {
   EmptyListContainer,
   EmptyListMessage
 } from './styles';
+import useStorageData from '../../hooks/useStorageData';
 
 interface LoginDataProps {
   id: string;
@@ -24,13 +25,13 @@ type LoginListDataProps = LoginDataProps[];
 export function Home() {
   const [searchListData, setSearchListData] = useState<LoginListDataProps>([]);
   const [data, setData] = useState<LoginListDataProps>([]);
+  const { getLogins } = useStorageData();
 
   async function loadData() {
-    const data = await AsyncStorage.getItem('@passmanager:logins');
-    if (data) {
-      setData(JSON.parse(data));
-      setSearchListData(JSON.parse(data));
-    }
+    const logins = await getLogins();
+
+    setData(logins);
+    setSearchListData(logins);
   }
 
   useEffect(() => {

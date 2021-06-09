@@ -6,6 +6,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { Home } from '../screens/Home';
 import { RegisterLoginData } from '../screens/RegisterLoginData';
 import { Platform } from 'react-native';
+import theme from '../global/styles/theme';
 
 const {
   Navigator,
@@ -20,7 +21,7 @@ export function AppRoutes() {
         inactiveTintColor: '#9883BF',
         labelPosition: 'beside-icon',
         labelStyle: {
-          fontFamily: 'Poppins_500Medium',
+          fontFamily: theme.fonts.medium,
           fontSize: RFValue(14),
           marginLeft: RFValue(14)
         },
